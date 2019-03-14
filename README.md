@@ -36,7 +36,7 @@ SDK使用中的任何问题，欢迎您在Github SDK使用问题反馈页面交�
 
 
 ## 调用示例 ##
-demo中包含了简单的调用示例。注意：调用签名工具前，需要对请求和路径参数进行urlencode。
+demo中包含了简单的调用示例。
 
 	    $credentials = new Credentials('ak', 'sk');
 	    $signature = new SignatureV4('testApiGroup', 'cn-north-1');
@@ -52,3 +52,7 @@ demo中包含了简单的调用示例。注意：调用签名工具前，需要�
 	    $response = $client->send($signedRequest, [
                 'timeout' => 20,
 	    ]);
+
+### 注意事项
+ - 调用签名工具前，需要对请求和路径参数进行urlencode
+ - 请求中需要传递签名工具自动添加的几个x-jdcloud-xxx的请求头
