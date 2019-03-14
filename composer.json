@@ -1,7 +1,7 @@
 {
-	"name" : "jdcloud-api/jdcloud-sdk-php-signer",
+	"name" : "jdcloud-api/apigateway-signer",
 	"homepage" : "https://www.jdcloud.com/help/faq?act=3",
-	"description" : "JDCloud Signer for PHP",
+	"description" : "JDCloud API gataway Signer for PHP",
 	"keywords" : [
 		"jdcloud",
 		"signer",
