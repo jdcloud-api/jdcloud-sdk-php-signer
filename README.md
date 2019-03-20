@@ -40,12 +40,11 @@ demo中包含了简单的调用示例。
 
 	    $credentials = new Credentials('ak', 'sk');
 	    $signature = new SignatureV4('testApiGroup', 'cn-north-1');
-	    $request = new Request('POST', 'http://xqokj9u7k483.cn-north-1.jdcloud-api.net/iampost',
+        $request = new Request('POST', 'http://xqokj9u7k483.cn-north-1.jdcloud-api.net/iampost?param=param',
             [
-                'query' => 'name=test',
-                'x-my-header' => 'test',
-                'body' => 'raw data'
-            ]
+                'x-my-header' => 'test'
+            ], 
+            'body data'
             );
  	    $signedRequest = $signature->signRequest($request, $credentials);
 	    $client = new Client();
