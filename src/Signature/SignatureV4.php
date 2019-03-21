@@ -57,6 +57,7 @@ class SignatureV4 implements SignatureInterface
         }
         $sdt = substr($parsed['headers']['x-jdcloud-date'][0], 0, 8);
         $cs = $this->createScope($sdt, $this->region, $this->service);
+        
         $payload = $this->getPayload($request);
 
         if ($payload == self::UNSIGNED_PAYLOAD) {
@@ -66,9 +67,9 @@ class SignatureV4 implements SignatureInterface
         }
 
         $context = $this->createContext($parsed, $payload);
-        $toSign = $this->createStringToSign($ldt, $cs, $context['creq']);
-
+        $toSign = $this->createStringToSign($parsed['headers']['x-jdcloud-date'][0], $cs, $context['creq']);
 //         var_dump($toSign);
+
         $signingKey = $this->getSigningKey(
             $sdt,
             $this->region,
@@ -77,7 +78,6 @@ class SignatureV4 implements SignatureInterface
             );
         
         
-//         var_dump($signingKey);
         $signature = hash_hmac('sha256', $toSign, $signingKey);
 //         var_dump($signature);
 
@@ -246,7 +246,9 @@ class SignatureV4 implements SignatureInterface
             'from'                => true,
             'referer'             => true,
             'user-agent'          => true,
-            'x-jdcloud-trace-id'     => true
+            'x-jdcloud-request-id' => true,
+            'x-jdcloud-algorithm' => true,
+            'host' => true
         ];
 
         // Normalize the path as required by SigV4
@@ -279,6 +281,7 @@ class SignatureV4 implements SignatureInterface
             . $signedHeadersString . "\n"
             . $payload;
 
+//         var_dump($canon);
         return ['creq' => $canon, 'headers' => $signedHeadersString];
     }
 
