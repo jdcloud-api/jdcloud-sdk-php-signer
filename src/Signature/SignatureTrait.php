@@ -34,18 +34,18 @@ trait SignatureTrait
                 "JDCLOUD2{$secretKey}",
                 true
             );
-            var_dump(bin2hex($dateKey));
+//             var_dump(bin2hex($dateKey));
             $regionKey = hash_hmac('sha256', $region, $dateKey, true);
-            var_dump(bin2hex($regionKey));
+//             var_dump(bin2hex($regionKey));
             $serviceKey = hash_hmac('sha256', $service, $regionKey, true);
-            var_dump(bin2hex($serviceKey));
+//             var_dump(bin2hex($serviceKey));
             $this->cache[$k] = hash_hmac(
                 'sha256',
                 'jdcloud2_request',
                 $serviceKey,
                 true
                 );
-            var_dump(bin2hex($this->cache[$k]));
+//             var_dump(bin2hex($this->cache[$k]));
         }
 
         return $this->cache[$k];

@@ -29,7 +29,7 @@ class SimpleDemo {
             ]
             );
         $signedRequest = $signature->signRequest($request, $credentials);
-        var_dump($signedRequest);
+//         var_dump($signedRequest);
         $client = new Client();
         
         try{
@@ -53,7 +53,7 @@ class SimpleDemo {
         $credentials = new Credentials('F1F513F897FAA88AED2889DAAA0E8D59', 'A2EEC56F0E7FAAA8B1D420FBECFC3CD5');
         $signature = new SignatureV4('testApiGroup', 'cn-north-1');
         $request = new Request('POST', 
-            'http://xqokj9u7k483.cn-north-1.jdcloud-api.net/iampost:action?p1=/j&p2=/%6a&p3=/%6A&o=%&u=u&o2=гд&o1=%25',
+            'http://xqokj9u7k483.cn-north-1.jdcloud-api.net/iampost?p1=/j&p2=/%6a&p3=/%6A&o=%&u=u&o2=гд&o1=%25',
             [
                 'x-my-header' => ' \ttest\r'                
             ], 'body data'
