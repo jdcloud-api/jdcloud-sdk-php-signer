@@ -83,7 +83,7 @@ class SimpleDemo {
         $signature = new SignatureV4('testApiGroup', 'cn-north-1');
         $request = new Request('POST', 'http://xqokj9u7k483.cn-north-1.jdcloud-api.net/iampost',
             [
-                'x-my-header' => 'test',
+                'x-my-header' => 'test    ',
                 'x-jdcloud-Content-Sha256' => 'UNSIGNED-PAYLOAD'
             ],                
             'assume I am big body, thus i donot want body to sign, I pass header x-jdcloud-Content-Sha256: UNSIGNED-PAYLOAD'
