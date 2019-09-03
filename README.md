@@ -14,7 +14,7 @@
 首先在composer.json添加
 
 	"require" : {
-		"php" : ">=5.4",
+		"php" : ">=5.5",
 		"jdcloud-api/apigateway-signer" : ">=0.1",
 	}
     
